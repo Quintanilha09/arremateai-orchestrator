@@ -1,0 +1,57 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: arremateai-orchestrator
+  jackson:
+    default-property-inclusion: non_null
+
+services:
+  property-catalog:
+    url: http://localhost:8082
+  media:
+    url: http://localhost:8083
+  vendor:
+    url: http://localhost:8084
+  user-profile:
+    url: http://localhost:8085
+  notification:
+    url: http://localhost:8086
+    api-key: ${INTERNAL_API_KEY}
+  admin:
+    user-id: ${ADMIN_USER_ID:}
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+        permittedNumberOfCallsInHalfOpenState: 3
+    instances:
+      property-catalog:
+        baseConfig: default
+      user-profile:
+        baseConfig: default
+      vendor:
+        baseConfig: default
+      notification:
+        baseConfig: default
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+springdoc:
+  api-docs:
+    path: /api/orchestrator/v3/api-docs
+  swagger-ui:
+    path: /api/orchestrator/swagger-ui.html
+
+logging:
+  level:
+    com.arremateai.orchestrator: DEBUG

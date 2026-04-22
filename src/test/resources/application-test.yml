@@ -1,0 +1,3 @@
+services:
+  notification:
+    api-key: test-api-key-dummy
