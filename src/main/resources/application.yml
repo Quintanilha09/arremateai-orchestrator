@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: ${SERVER_PORT:8087}
 
 spring:
   application:
@@ -9,15 +9,15 @@ spring:
 
 services:
   property-catalog:
-    url: http://localhost:8082
+    url: ${PROPERTY_CATALOG_URL:http://localhost:8082}
   media:
-    url: http://localhost:8083
+    url: ${MEDIA_URL:http://localhost:8083}
   vendor:
-    url: http://localhost:8084
+    url: ${VENDOR_URL:http://localhost:8084}
   user-profile:
-    url: http://localhost:8085
+    url: ${USERPROFILE_URL:http://localhost:8085}
   notification:
-    url: http://localhost:8086
+    url: ${NOTIFICATION_URL:http://localhost:8086}
     api-key: ${INTERNAL_API_KEY}
   admin:
     user-id: ${ADMIN_USER_ID:}
@@ -54,4 +54,4 @@ springdoc:
 
 logging:
   level:
-    com.arremateai.orchestrator: DEBUG
+    com.arremateai.orchestrator: ${ORCHESTRATOR_LOG_LEVEL:DEBUG}
