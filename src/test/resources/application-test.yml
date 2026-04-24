@@ -1,3 +1,18 @@
 services:
+  property-catalog:
+    url: http://localhost:59991
+  media:
+    url: http://localhost:59992
+  vendor:
+    url: http://localhost:59993
+  user-profile:
+    url: http://localhost:59994
   notification:
-    api-key: test-api-key-dummy
+    url: http://localhost:59995
+    api-key: test-internal-key
+  admin:
+    user-id: 00000000-0000-0000-0000-000000000001
+
+logging:
+  level:
+    com.arremateai.orchestrator: WARN
