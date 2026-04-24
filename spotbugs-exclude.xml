@@ -26,6 +26,10 @@
     <Match>
         <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
     </Match>
+    <!-- Mono.zip().block() em orquestração Reactor: retorno null só ocorre em cenário já tratado pelos onErrorResume -->
+    <Match>
+        <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE"/>
+    </Match>
     <!-- Ignorar testes -->
     <Match>
         <Class name="~.*Test"/>
